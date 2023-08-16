@@ -20,11 +20,11 @@ independently, I identified several issues:
 - There seems to be an error in the official code when splitting the patches. For the univariate time series in Figure (
   a), its Patch-wise and In-patch embedding should be as shown in Figure (b) and Figure (c), respectively.
 
-  ![](img/fig1.png)
+  ![](./img/fig1.png)
 
   The official code can't do this as shown in Figure (a), and the correct one is shown in Figure (b):
 
-  ![](img/fig2.png)
+  ![](./img/fig2.png)
 
 - The official code does not seem to sum the representations of multiple patch sizes according to equations (7) and
   equations (8) in the paper, instead it sums the their KL divergence distances when calculating the loss. As far as we
@@ -33,12 +33,12 @@ independently, I identified several issues:
     - The official code does not concat the multiple heads as stated in the paper, but averages them after evaluating
       their respective KL divergence.
     - There is no $W_{\mathcal{N}}^O$ and $W_{\mathcal{P}}^O$ in the official code. In fact, this multiplication does
-      not work at all. $\operatorname{Attn}_{\mathcal{N}}$ [$\operatorname{Attn}_{\mathcal{P}}$] has a shape of $B\times
-      H\times N \times N$ [$B\times H\times P \times P$], and it cannot be multiplied at all by a $W_
-      {\mathcal{N}}^O$ [$W_{\mathcal{P}}^O$] with a shape of $d_{\text {model }} \times d_{\text
-      {model }}$[$d_{\text {model }} \times d_{\text {model }}$], concated or not.
+      not work at all. $\operatorname{Attn}_{\mathcal{N}}$ ($\operatorname{Attn}_{\mathcal{P}}$) has a shape of $B\times
+      H\times N \times N$ ($B\times H\times P \times P$), and it cannot be multiplied at all by a $W_
+      {\mathcal{N}}^O$ ($W_{\mathcal{P}}^O$) with a shape of $d_{\text {model }} \times d_{\text
+      {model }}$($d_{\text {model }} \times d_{\text {model }}$), concated or not.
 - Each attention layer in the encoder has an input shape of $(BC)\times H\times P\times
-  P$  [$(BC)\times H\times N\times N$]and an output shape of $B \times H \times (NP)\times (
-  NP)$ [$B \times H \times (NP)\times (NP)$)]. Because of the inconsistent shapes, the individual attention layers
+  P$  ($(BC)\times H\times N\times N$)and an output shape of $B \times H \times (NP)\times (
+  NP)$ ($B \times H \times (NP)\times (NP)$)). Because of the inconsistent shapes, the individual attention layers
   cannot be connected in series, and the official code uses a parallel approach and sums the KL divergence of the
   different attention layers. This is not mentioned at all in the paper.
