@@ -14,7 +14,7 @@ The definitions of the loss function and the anomaly score do not match Equation
 
 ## Issue 2
 
-The official code for computing $\text{Attn}_ {\mathcal{N}_ i}$ and $\text{Attn}_ {\mathcal{P}_ i}$ does not match the equations (2) and (5) in the paper. The denominator in the paper is $\sqrt{d_ {\text {model }}}$, while in the code it is $\sqrt{\frac{d_ {{model }}} {H}}$.
+The official code for computing $\text{Attn}_ {\mathcal{N}_ i}$ and $\text{Attn}_ {\mathcal{P}_ i}$ does not match the equations (2) and (5) in the paper. The denominator in the paper is $\sqrt{d_ {\text {model }}}$, while in the code it is $\sqrt{\frac{d_ {\text{model }}} {H}}$.
 
 ## Issue 3
 
