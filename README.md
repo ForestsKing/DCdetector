@@ -14,7 +14,7 @@ The definitions of the loss function and the anomaly score do not match Equation
 
 ## Issue 2
 
-The official code for computing $\operatorname{Attn}_{\mathcal{N}_i}$ and $\operatorname{Attn}_{\mathcal{P}_i}$ does not match the equations (2) and (5) in the paper. The denominator in the paper is $\sqrt{d_{\text {model }}}$, while in the code it is $\sqrt{\frac{d_{\text {model }}}{H}}$.
+The official code for computing $\operatorname{Attn}_ {\mathcal{N}_ i}$ and $\operatorname{Attn}_ {\mathcal{P}_ i}$ does not match the equations (2) and (5) in the paper. The denominator in the paper is $\sqrt{d_ {\text {model }}}$, while in the code it is $\sqrt{\frac{d_ {\text {model }}}{H}}$.
 
 ## Issue 3
 
@@ -36,7 +36,7 @@ Equation (3) and Equation (6) in the paper seem to be wrong.
 
 The official code does not concat the multiple heads as stated in the paper, but averages them after evaluating their respective KL divergence.
 
-There is no $W_{\mathcal{N}}^O$ and $W_{\mathcal{P}}^O$ in the official code. In fact, this multiplication does not work at all. $\operatorname{Attn}_{\mathcal{N}}$ ($\operatorname{Attn}_{\mathcal{P}}$) has a shape of $B\times H\times N \times N$ ($B\times H\times P \times P$), and it cannot be multiplied at all by a $W_{\mathcal{N}}^O$ ($W_{\mathcal{P}}^O$) with a shape of $d_{\text {model }} \times d_{\text{model }}$($d_{\text {model }} \times d_{\text {model }}$), concated or not.
+There is no $W_ {\mathcal{N}}^O$ and $W_ {\mathcal{P}}^O$ in the official code. In fact, this multiplication does not work at all. $\operatorname{Attn}_ {\mathcal{N}}$ ($\operatorname{Attn}_ {\mathcal{P}}$) has a shape of $B\times H\times N \times N$ ($B\times H\times P \times P$), and it cannot be multiplied at all by a $W_ {\mathcal{N}}^O$ ($W_ {\mathcal{P}}^O$) with a shape of $d_ {\text {model }} \times d_ {\text{model }}$($d_ {\text {model }} \times d_ {\text {model }}$), concated or not.
 
 ## Issue 6
 
