@@ -20,11 +20,11 @@ independently, I identified several issues:
 - There seems to be an error in the official code when splitting the patches. For the univariate time series in Figure (
   a), its Patch-wise and In-patch embedding should be as shown in Figure (b) and Figure (c), respectively.
 
-  ![](./img/fig1.png)
+  ![](img/fig1.png)
 
   The official code can't do this as shown in Figure (a), and the correct one is shown in Figure (b):
 
-  ![](./img/fig2.png)
+  ![](img/fig2.png)
 
 - The official code does not seem to sum the representations of multiple patch sizes according to equations (7) and
   equations (8) in the paper, instead it sums the their KL divergence distances when calculating the loss. As far as we
